@@ -1,12 +1,14 @@
+# Plan-A-Challenge2
+
+This is a simple guide to deploy aws vpc and eks resource using terraform 
+
 #1. Login to your aws account or create on if you don"t have one
 
 
 #2. Set up Terraform with AWS
-In your AWS console, go to the IAM section 
+Retrieve the Secret Access Key and Access Key ID and Save them preciously because this will be the only time AWS gives it to you.
 
-AWS will provide you a Secret Access Key and Access Key ID. Save them preciously because it is a onetime setup.
-
-#3 From the AWS CLI run the aws configure command to set your access and secret keys retrieve from AWS Console
+#3 From the AWS CLI run the aws configure command to set your access and secret keys
 aws configure
 
 
@@ -15,8 +17,7 @@ For more details  use the link https://learn.hashicorp.com/tutorials/terraform/i
 
 
 
-
-#5 Open a command prompt at the root folder aws_vpc_eks_setup  of the repository cloned locally
+#5 Open a command prompt at the root folder aws_vpc_eks_setup  on
 
 #6 # Initialize the terraform configuration
   Run the command  "terraform init"
@@ -24,4 +25,5 @@ For more details  use the link https://learn.hashicorp.com/tutorials/terraform/i
 
 #7  Plan the terraform deployment
 Run the command "terraform plan -out planA_test_challenge2.tfplan"
+
 
