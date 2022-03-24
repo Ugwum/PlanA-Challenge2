@@ -27,3 +27,8 @@ For more details  use the link https://learn.hashicorp.com/tutorials/terraform/i
 Run the command "terraform plan -out planA_test_challenge2.tfplan"
 
 
+
+#8 Apply the deployment to the AWS Account
+run the command  terraform apply "planA_test_challenge2.tfplan"
+
+
