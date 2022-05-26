@@ -23,12 +23,12 @@ SMSService.Test -- This project contains Unit test implementation including fake
 
 
 
-###Requirements
+##Requirements
 
 This was created and tested on an Ubuntu 14.04 Linux system using Ruby 2.3.0.  It should likely run on an OSx box without any trouble.
 
 
-###Installation instructions / Run Instructions
+##Installation instructions / Run Instructions
 
 I used the RVM package manager and you'll notice the .ruby-gemset and .ruby-version files in this code repository.
 
@@ -49,6 +49,6 @@ The last step is to talk about approaches and tradeoffs. This lets your reader k
 This is because it lets the hiring manager know that you’re able to think about issues in a holistic way and that you’re a good problem solver. The real-world is all about tradeoffs.
 
 
-### How your Infrastructure looks like.
+## How your Infrastructure looks like.
 
 ![](interview-infra.png "Your Infra")
