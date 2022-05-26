@@ -23,12 +23,12 @@ SMSService.Test -- This project contains Unit test implementation including fake
 
 
 
-##Requirements
+## Requirements
 
 This was created and tested on an Ubuntu 14.04 Linux system using Ruby 2.3.0.  It should likely run on an OSx box without any trouble.
 
 
-##Installation instructions / Run Instructions
+## Installation instructions / Run Instructions
 
 I used the RVM package manager and you'll notice the .ruby-gemset and .ruby-version files in this code repository.
 
