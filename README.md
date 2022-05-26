@@ -1,30 +1,54 @@
-# Plan-A-Challenge2
+# M-KOPA Senior Backend Software Engineer – Take Home Exercise
 
-This is a simple guide to deploy aws vpc and eks resource using terraform 
+The Solution is a Simple SMS Processor microservice which is a wrapper around the API for a 3rd
+party SMS service. The SMS Processor Microservice consumes Send SMS command containing customer phone and smsText as payload from a queue 
 
-# Prerequisites
-1. Login to your aws account or create on if you don"t have one
+and sends Http Request with a json payload to the 3rd Party SMS Service 
 
-2. Set up Terraform with AWS
-Retrieve the Secret Access Key and Access Key ID and Save them preciously because this will be the only time AWS gives it to you.
+The SMS Processor Microservice publishes “SmsSent” event to a global event bus for successfully sent sms to the 3rd party SMS Service
 
-3. From the AWS CLI run the aws configure command to set your access and secret keys
-aws configure
+## Project Solution structure/Overview
 
-4. Download and  Set up Terraform CLI
-For more details  use the link https://learn.hashicorp.com/tutorials/terraform/install-cli to complete this step 
+The solution and project structure runs in visual studio using a NTier strucuture
 
 
-# To create and deploy the  vpc,eks resources on AWS using terraform 
+SMSService.Common -- Is a class library that handles crosss concerns and abstractions 
 
-1. Clone the repository git clone https://github.com/Ugwum/Plan-A-Challenge2.git
+SMSService.SMSProcessor -- Contains the implementation for a Background .NET Core Worker Service 
+to handle receiving SendSMS command for the MessageQueue assuming RabbitMQ as the underlying MessageBroker
 
-2. Open a command prompt at the root folder aws_vpc_eks_setup  i.e cd  Plan-A-Challenge2\aws_vpc_eks_setup
+SMSService.Implementation -- The project defines the concrete implementation for the abstractions defined in SMSService.Common Library
 
-3. Run the command  "terraform init" to initialize terraform and its configuration
-  
-4. Run the command "terraform plan -out planA_test_challenge2.tfplan" to plan the terraform deployment.
-
-5. Run the command  terraform apply "planA_test_challenge2.tfplan" to Apply the deployment to the AWS Account
+SMSService.Test -- This project contains Unit test implementation including fakes and mock to test functionality of the abstractions specified.
 
 
+
+###Requirements
+
+This was created and tested on an Ubuntu 14.04 Linux system using Ruby 2.3.0.  It should likely run on an OSx box without any trouble.
+
+
+###Installation instructions / Run Instructions
+
+I used the RVM package manager and you'll notice the .ruby-gemset and .ruby-version files in this code repository.
+
+Step 1: *bundle install* to your RVM gemset (or whatever setup is most convenient for you)
+
+Step 2: Run *ruby hp_calculator.rb* and start inputting your data
+
+Step 2a: Press *q* or *CTRL+D* to stop the program
+
+Step 3 (optional): Run *rspec spec* in the main directory to run the tests
+
+
+## Implementation Approaches and Tradeoffs
+
+ 
+The last step is to talk about approaches and tradeoffs. This lets your reader know how you thought about the problem and what your solution offers. In fact, I might argue that this is just as important as an actual working solution.
+
+This is because it lets the hiring manager know that you’re able to think about issues in a holistic way and that you’re a good problem solver. The real-world is all about tradeoffs.
+
+
+### How your Infrastructure looks like.
+
+![](interview-infra.png "Your Infra")
