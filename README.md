@@ -35,7 +35,7 @@ SMSService.Test -- This project contains Unit test implementation including fake
 
 ### Using Command Prompt 
 		 ####Unit Test
-		    1. Unzip the solution to any location of choice on your pc.
+		    1. Unzip the solution.
 			
 			2. Open command prompt on the root folder of the solution.
 			
@@ -43,11 +43,11 @@ SMSService.Test -- This project contains Unit test implementation including fake
 
 		#### SMSCommandProcessor
 
-			1. Unzip the solution to any location of choice on your pc.
+			1. Unzip the solution.
 			
 			2. Open command prompt on the root folder of the solution.
 			
-			3. Run the command "dotnet test"  to run all test nugget packages and run the unit tests of the solution
+			3. Run the command "dotnet run -- project SMSCommadnProcessor.csproj"  to run asp.net core background worker service t process SendSMSCommand
 	
 ### Using Visual Studio
 
@@ -60,12 +60,10 @@ SMSService.Test -- This project contains Unit test implementation including fake
 
 ## Implementation Approaches and Tradeoffs
 
+ 1. Please note for the Unit test Setup I used FakeItEasy library for mock and fake my interface for ThirdPartySMSClient and SMSEventStore
  
-The last step is to talk about approaches and tradeoffs. This lets your reader know how you thought about the problem and what your solution offers. In fact, I might argue that this is just as important as an actual working solution.
+ 2. For the Message Queue based on the system diagram I used RabbitMQ as Message Queue broker which provided a message queuing framework  enqueuing and delivery of published SendSMS Command to the background worker service SMSCommandProcessor. The Background Worker Service - SMSCommandProcessor  implements the logic for sending the SMS to the thirdparty sms Service and publishing an
+“SmsSent” event to a global event bus. 
 
-This is because it lets the hiring manager know that you’re able to think about issues in a holistic way and that you’re a good problem solver. The real-world is all about tradeoffs.
+ Using the Abstraction provided in the Interface ISendSMSCommandProcessor,  other MessageQueue implementation can be provided for example using Amazon Simple Queue Service (SQS),  Azure Service Bus, 
 
-
-## How your Infrastructure looks like.
-
-![](interview-infra.png "Your Infra")
