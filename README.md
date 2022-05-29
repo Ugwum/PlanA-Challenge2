@@ -9,37 +9,54 @@ The SMS Processor Microservice publishes “SmsSent” event to a global event b
 
 ## Project Solution structure/Overview
 
-The solution and project structure runs in visual studio using a NTier strucuture
+The solution and project structure runs in visual studio using a which different class library projects to 
+
+SMSMicroService.Abstractions -- Is a class library that handles crossscutting concerns and abstractions and interfaces to build the concrete implementations for the sms microservice 
+
+SMSCommandProcessor -- Contains the implementation for a Background .NET Core Worker Service to handle receiving SendSMS command for the MessageQueue assuming RabbitMQ as the underlying MessageBroker
 
 
-SMSService.Common -- Is a class library that handles crosss concerns and abstractions 
+SMSService.Test -- This project contains Unit test implementation including fakes and mock to test functionality of the abstractions specified. Please note there is a r
 
-SMSService.SMSProcessor -- Contains the implementation for a Background .NET Core Worker Service 
-to handle receiving SendSMS command for the MessageQueue assuming RabbitMQ as the underlying MessageBroker
-
-SMSService.Implementation -- The project defines the concrete implementation for the abstractions defined in SMSService.Common Library
-
-SMSService.Test -- This project contains Unit test implementation including fakes and mock to test functionality of the abstractions specified.
-
-
-
+ 
 ## Requirements
 
-This was created and tested on an Ubuntu 14.04 Linux system using Ruby 2.3.0.  It should likely run on an OSx box without any trouble.
+1. For the purpose of the Unit test and Background .NET Core worker service implementation we assummed RabbitMQ as a Message Broker for our MessageQueue which helps to enqueue published send sms command and dequeue to consumers for processing 
+  
+  For more instruction to setup rabbit MQ on window please follow the link https://www.rabbitmq.com/install-windows.html.
+  
+2. Visual Studio 2017 or above with .NET Core 
+
+3. .NET Core 3.1 SDK install 
+  
 
 
-## Installation instructions / Run Instructions
+## Run Instructions
 
-I used the RVM package manager and you'll notice the .ruby-gemset and .ruby-version files in this code repository.
+### Using Command Prompt 
+		 ####Unit Test
+		    1. Unzip the solution to any location of choice on your pc.
+			
+			2. Open command prompt on the root folder of the solution.
+			
+			3. Run the command "dotnet test"  to run all test nugget packages and run the unit tests of the solution
 
-Step 1: *bundle install* to your RVM gemset (or whatever setup is most convenient for you)
+		#### SMSCommandProcessor
 
-Step 2: Run *ruby hp_calculator.rb* and start inputting your data
+			1. Unzip the solution to any location of choice on your pc.
+			
+			2. Open command prompt on the root folder of the solution.
+			
+			3. Run the command "dotnet test"  to run all test nugget packages and run the unit tests of the solution
+	
+### Using Visual Studio
 
-Step 2a: Press *q* or *CTRL+D* to stop the program
-
-Step 3 (optional): Run *rspec spec* in the main directory to run the tests
-
+    1. Unzip the solution to any location of choice on your pc.
+	
+	2. Open solution project on Visual Studio
+	
+	3. Build and Run the projects
+	
 
 ## Implementation Approaches and Tradeoffs
 
